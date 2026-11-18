@@ -205,7 +205,7 @@
           <if match="any" type="paper-conference">
             <group delimiter=", " suffix=". ">
               <group>
-                <text term="in" font-style="italic" text-case="capitalize-first" suffix=": "/>
+                <text value="In" font-style="italic" suffix=": "/>
                 <text variable="event" text-case="uppercase"/>
               </group>
               <choose>
@@ -233,7 +233,7 @@
           </if>
           <else>
             <group suffix=". ">
-              <text term="in" font-style="italic" text-case="capitalize-first" suffix=": "/>
+              <text value="In" font-style="italic" suffix=": "/>
               <text variable="event" text-case="uppercase" suffix=". "/>
               <text variable="genre" text-case="capitalize-first" suffix=". "/>
             </group>
@@ -370,8 +370,8 @@
       </group>
     </layout>
   </citation>
-  <!-- AJUSTE 1: traço único para o conjunto de autores (rule complete-all em vez de partial-each) -->
-  <bibliography hanging-indent="false" et-al-min="4" et-al-use-first="1" entry-spacing="1" subsequent-author-substitute="______" subsequent-author-substitute-rule="complete-all">
+  <!-- AJUSTE 1: sem substituição de autor repetido por traço: os nomes aparecem em todas as referências -->
+  <bibliography hanging-indent="false" et-al-min="4" et-al-use-first="1" entry-spacing="1">
     <sort>
       <key macro="author"/>
       <key variable="issued"/>
@@ -411,15 +411,15 @@
             <text macro="author"/>
             <text macro="title"/>
             <text macro="secondary-contributors"/>
-            <!-- AJUSTE 2: "In: ______" quando o livro não tem organizador/autor do livro cadastrado -->
+            <!-- AJUSTE 2: "In:" com os autores do capítulo quando o livro não tem organizador/autor do livro cadastrado -->
             <group delimiter=": ">
-              <text term="in" font-style="italic" text-case="capitalize-first"/>
+              <text value="In" font-style="italic"/>
               <choose>
                 <if variable="container-author editor collection-editor" match="any">
                   <text macro="container-contributors"/>
                 </if>
                 <else>
-                  <text value="______"/>
+                  <text macro="author"/>
                 </else>
               </choose>
             </group>
@@ -522,7 +522,7 @@
             <text macro="author"/>
             <text macro="title"/>
             <group>
-              <text term="in" font-style="italic" text-case="capitalize-first" suffix=": "/>
+              <text value="In" font-style="italic" suffix=": "/>
               <group delimiter=". ">
                 <text macro="container-contributors"/>
                 <text macro="container-title"/>
